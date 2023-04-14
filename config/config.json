@@ -1,0 +1,14 @@
+{
+  "development": {
+    "storage":"./adminka.db",
+    "dialect": "sqlite"
+  },
+  "test": {
+    "storage":"./adminka.db",
+    "dialect": "sqlite"
+  },
+  "production": {
+    "storage":"./adminka.db",
+    "dialect": "sqlite"
+  }
+}
