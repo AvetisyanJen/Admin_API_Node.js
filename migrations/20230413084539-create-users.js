@@ -12,6 +12,9 @@ module.exports = {
       email: {
         type: Sequelize.TEXT
       },
+      username:{
+        type: Sequelize.TEXT
+      },
       password: {
         type: Sequelize.TEXT
       },
@@ -19,6 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },
+  
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

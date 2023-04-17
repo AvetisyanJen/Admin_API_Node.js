@@ -14,13 +14,12 @@ function authenticateToken(req, res, next) {
         if (err) {
           return res.sendStatus(403)
         }
-        const {role,email}= user
-        console.log(user);
-        if (role !== 1 && email !== "admin"){
-          return res.sendStatus(403)
-        }
-      next()
       
+         if (user.role == 1 && user.username == "Admin"){
+          next()
+        }
+     
+      return res.sendStatus(403)
       })
     }
 
