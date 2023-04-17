@@ -10,11 +10,11 @@ function get_Category (req, res) {
      
  }
  function get_Category_post(req,res){
-    const { id } = req.params;
+   
     const { name} = req.body;
     Category.create(
         { name },
-        {where:{id}}
+  
     ) 
     .then((category)=>{
      res.json(category)}).catch((err)=>{
