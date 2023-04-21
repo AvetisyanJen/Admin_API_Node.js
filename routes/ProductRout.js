@@ -9,6 +9,6 @@ product_router.get ('/',Product.get_Product)
 product_router.get ('/:id',Product.get_Product_id)
 product_router.put ('/update/:id',authenticateToken,Product.get_Product_update)
 product_router.post ('/post',authenticateToken,Product.get_Product_post)
-product_router.delete ('/delete/:id',authenticateToken,Product.get_Product_delete)
+product_router.delete ('/delete',authenticateToken,Product.get_Product_delete)
 
 module.exports=product_router

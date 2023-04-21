@@ -63,7 +63,7 @@ function get_Product_post(req, res) {
 }
 
 function get_Product_delete(req, res) {
-    const { id } = req.params;
+    const { id } = req.body;
     let product = Product.destroy(
         { where: { id } })
         .then((prod) => {
