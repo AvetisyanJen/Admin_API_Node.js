@@ -45,7 +45,7 @@ function get_Category_update(req, res) {
            
         })
         .then((cat) => {
-            res.json({ status: 'updated' })
+            res.json({ message: 'Updated' })
         }).catch((err) => {
             res.status(500).json({ eror: err.message })
         })
@@ -55,16 +55,24 @@ function get_Category_update(req, res) {
 
 
 
-function get_Category_delete(req,res){
-    const { id } = req.params;
-    Category.destroy(
-            { where: { id } })
-            .then((cat) => {
-                res.json({ status: 'deleted' })
-            }).catch((err) => {
-                res.status(500).json({ eror: err.message })
-            })
+async function get_Category_delete(req,res){
+    const { id } = req.body;
     
+    try {
+        const category = await Category.findOne({
+            where: { id },
+            include: Product
+        });
+        
+        if (category.Products.length > 0) {
+            res.status(400).json({ error: 'Cannot delete category that has products' });
+        } else {
+            await Category.destroy({ where: { id } });
+            res.json({ message: 'Category deleted' });
+        }
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
     }
 
 

@@ -46,12 +46,11 @@ function get_Product_update(req, res) {
 }
 
 function get_Product_post(req, res) {
-    const { id } = req.params;
+    // const { id } = req.params;
     const { name, description, price, categoriId } = req.body;
    Product.create(
         { name, description, price, categoriId },
         {
-            where: { id },
             include: Category
         })
         .then((prod) => {
